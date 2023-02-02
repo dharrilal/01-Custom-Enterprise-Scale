@@ -2,7 +2,7 @@
 
 variable "root_id" {
   type    = string
-  default = "OAG Alberta"
+  default = "OAGAlberta"
 }
 
 variable "root_name" {

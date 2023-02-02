@@ -24,8 +24,8 @@ module "enterprise_scale" {
   library_path   = "${path.root}/lib"
 
   custom_landing_zones = {
-    "${var.root_id}-Production" = {
-      display_name               = "${upper(var.root_id)} Production"
+    "${var.root_id}-LandingZoneProd" = {
+      display_name               = "${upper(var.root_id)} LandingZoneProd"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
@@ -34,18 +34,28 @@ module "enterprise_scale" {
         access_control = {}
       }
     }
-    "${var.root_id}-DEV/Test" = {
-      display_name               = "${upper(var.root_id)} DEV/Test"
+    "${var.root_id}-LandingZoneQA" = {
+      display_name               = "${upper(var.root_id)} LandingZoneQA"
+      parent_management_group_id = "${var.root_id}-landing-zones"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "customer_online"
+        parameters     = {}
+        access_control = {}
+      }  
+    }
+    "${var.root_id}-LandingZoneDev" = {
+      display_name               = "${upper(var.root_id)} LandingZoneDev"
       parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
         parameters     = {
           Deny-Resource-Locations = {
-            listOfAllowedLocations = ["canadacentral", "canadaeast"]
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
           }
           Deny-RSG-Locations = {
-            listOfAllowedLocations = ["canadacentral", "canadaeast"]
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
           }
         }
         access_control = {}
