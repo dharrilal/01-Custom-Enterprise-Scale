@@ -3,45 +3,45 @@
 variable "root_id" {
   type        = string
   description = "Sets the value used for generating unique resource naming within the module."
-  default     = "myorg"
+  default     = "OAGAlberta"
 }
 
 variable "root_name" {
   type        = string
   description = "Sets the value used for the \"intermediate root\" management group display name."
-  default     = "My Organization"
+  default     = "OAG Alberta Canada"
 }
 
 variable "primary_location" {
   type        = string
   description = "Sets the location for \"primary\" resources to be created in."
-  default     = "northeurope"
+  default     = "Canadacentral"
 }
 
 variable "secondary_location" {
   type        = string
   description = "Sets the location for \"secondary\" resources to be created in."
-  default     = "westeurope"
+  default     = "canadaeast"
 }
-
+#Enter subscriptions here 
 variable "subscription_id_connectivity" {
   type        = string
   description = "Subscription ID to use for \"connectivity\" resources."
   default     = ""
 }
-
+#Enter subscriptions here 
 variable "subscription_id_identity" {
   type        = string
   description = "Subscription ID to use for \"identity\" resources."
   default     = ""
 }
-
+#Enter subscriptions here 
 variable "subscription_id_management" {
   type        = string
   description = "Subscription ID to use for \"management\" resources."
   default     = ""
 }
-
+#Enter Owner email here 
 variable "email_security_contact" {
   type        = string
   description = "Set a custom value for the security contact email address."
@@ -59,21 +59,26 @@ variable "enable_ddos_protection" {
   description = "Controls whether to create a DDoS Network Protection plan and link to hub virtual networks."
   default     = false
 }
-
+# Update tags
 variable "connectivity_resources_tags" {
   type        = map(string)
   description = "Specify tags to add to \"connectivity\" resources."
   default = {
-    deployedBy = "terraform/azure/caf-enterprise-scale/examples/l400-multi"
-    demo_type  = "Deploy connectivity resources using multiple module declarations"
+    DeployedBy = "John Snow"
+    Owner  = "Bruce willis"
+    Environment = "Prod"
+    BusinessCriticality = "Mission-Critical"
   }
 }
 
+# Update tags
 variable "management_resources_tags" {
   type        = map(string)
   description = "Specify tags to add to \"management\" resources."
   default = {
-    deployedBy = "terraform/azure/caf-enterprise-scale/examples/l400-multi"
-    demo_type  = "Deploy management resources using multiple module declarations"
+    DeployedBy = "John Snow"
+    Owner  = "Bruce willis"
+    Environment = "Prod"
+    BusinessCriticality = "Mission-Critical"
   }
 }
